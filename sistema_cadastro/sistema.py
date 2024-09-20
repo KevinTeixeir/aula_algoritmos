@@ -1,5 +1,5 @@
 # Lista de clientes usando um dicionário
-clientes = {}
+clientes = []
 
 # Função para adicionar clientes
 def adicionar_clientes(nome, email, telefone, endereco):
@@ -13,31 +13,32 @@ def adicionar_clientes(nome, email, telefone, endereco):
             "telefone":telefone,
             "endereco":endereco,
         }
-        clientes[email] = cliente
-        print(f"cliente foi adicionado com sucesso, nome{clientes[email]}")
-
+        clientes.append(cliente)
+        print(f"cliente foi adicionado com sucesso")
+        return clientes
 # Função para exibir todos os clientes
 def exibir_clientes():
     if not clientes:
         print("nao possui clientes ainda")
     else:
-        for email, cliente in clientes.items():
-            print(f"nome: {cliente['nome']}, email: {cliente['email']}, telefone: {cliente['telefone']}, endereço: {cliente['endereco']}")
+        print(clientes)
 
 # Função para buscar cliente por email
 def buscar_cliente(email):
-    if email in clientes:
-        cliente = clientes[email]
-        print(f"Cliente encontrado: Nome: {cliente['nome']}, Email: {cliente['email']}, Telefone: {cliente['telefone']}, Endereço: {cliente['endereco']}")
-    else:
-        print("Cliente não encontrado")
+    for cliente in clientes:
+        if cliente["email"] == email:
+            print(f"Cliente encontrado: Nome: {cliente['nome']}, Email: {cliente['email']}, Telefone: {cliente['telefone']}, Endereço: {cliente['endereco']}")
+        else:
+            print("Cliente não encontrado")
 # Função para remover cliente por email
 def remover_cliente(email):
-     if email in clientes:
-        del clientes[email]
-        print("cliente removido")
-     else:
-         print("não foi possivel remover o cliente")
+     
+     for cliente in clientes:
+        if cliente["email"] == email:
+            clientes.remove(cliente)
+            print("cliente removido")
+        else:
+            print("não foi possivel remover o cliente")
 
 # Programa principal - Menu
 def menu():
