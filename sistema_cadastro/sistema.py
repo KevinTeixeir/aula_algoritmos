@@ -14,7 +14,7 @@ def adicionar_clientes(nome, email, telefone, endereco):
             "endereco":endereco,
         }
         clientes.append(cliente)
-        print(f"cliente foi adicionado com sucesso")
+        print(f"cliente foi adicionado com sucesso. nome {nome}")
         return clientes
 # Função para exibir todos os clientes
 def exibir_clientes():
